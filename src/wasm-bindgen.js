@@ -85,7 +85,7 @@ async function get_wasm_bindgen(dir, options) {
 
 
 async function run_wasm_bindgen(dir, wasm_path, out_dir, options) {
-    const wasm_bindgen_command = await get_wasm_bindgen(dir, options);
+    // const wasm_bindgen_command = await get_wasm_bindgen(dir, options);
 
     // TODO what about --debug --no-demangle --keep-debug ?
     let wasm_bindgen_args = [
@@ -100,9 +100,11 @@ async function run_wasm_bindgen(dir, wasm_path, out_dir, options) {
         wasm_bindgen_args = wasm_bindgen_args.concat(options.wasmBindgenArgs);
     }
 
-    if (options.verbose) {
-        debug(`Running wasm-bindgen ${wasm_bindgen_args.join(" ")}`);
-    }
+    // if (options.verbose) {
+    //     debug(`Running wasm-bindgen ${wasm_bindgen_args.join(" ")}`);
+    // }
+
+    const wasm_bindgen_command = "wasm-bindgen";
 
     await spawn(wasm_bindgen_command, wasm_bindgen_args, { cwd: dir, stdio: "inherit" });
 }
